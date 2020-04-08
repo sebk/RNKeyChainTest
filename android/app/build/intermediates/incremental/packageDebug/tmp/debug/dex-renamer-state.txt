@@ -1,4 +1,0 @@
-#Sun Apr 05 18:42:05 CEST 2020
-base.0=/Users/MAPP/code/RNKeyChainTest/android/app/build/intermediates/dex/debug/out/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
