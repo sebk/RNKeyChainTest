@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RNKeyChainTest.iml" filepath="$PROJECT_DIR$/RNKeyChainTest.iml" group="RNKeyChainTest" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-keychain/android/android-react-native-keychain.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-keychain/android/android-react-native-keychain.iml" group="RNKeyChainTest/react-native-keychain" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="RNKeyChainTest/app" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-keychain/android/react-native-keychain.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-keychain/android/react-native-keychain.iml" group="RNKeyChainTest/react-native-keychain" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-keychain/android/react-native-keychain-android-react-native-keychain.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-keychain/android/react-native-keychain-android-react-native-keychain.iml" group="RNKeyChainTest/react-native-keychain" />
+    </modules>
+  </component>
+</project>

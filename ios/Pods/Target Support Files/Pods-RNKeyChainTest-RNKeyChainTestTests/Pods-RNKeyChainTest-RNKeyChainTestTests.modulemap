@@ -1,0 +1,6 @@
+module Pods_RNKeyChainTest_RNKeyChainTestTests {
+  umbrella header "Pods-RNKeyChainTest-RNKeyChainTestTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
