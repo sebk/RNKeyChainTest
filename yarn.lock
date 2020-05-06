@@ -5323,10 +5323,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-keychain@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-5.0.1.tgz#2751de436f017c87b8aabb32533bee88657d643e"
-  integrity sha512-CLIPNexPBufPpNqgF7/smZNAiv6x0SCsztfEi/hWPCQ7yHxNwdRUyUzOLGrw1lPe/6fQE+TC3iS1+cbDTaRJag==
+react-native-keychain@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-6.0.0.tgz#687379dd8468e8c37caa3c4d1c91393c6e04cb1d"
+  integrity sha512-5jt2oS9WNBT/GXBRdb+9KHTQokI1eMRDa50aQFR1koXqUpkULhvxItgQ2CKTd+ZchZQK/hn85qHQOs/gWgUGYA==
 
 react-native-segmented-control-tab@^3.4.1:
   version "3.4.1"

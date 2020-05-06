@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -12,7 +12,7 @@ import * as Keychain from 'react-native-keychain';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
 const ACCESS_CONTROL_OPTIONS = ['None', 'Passcode', 'Password'];
-const ACCESS_CONTROL_OPTIONS_ANDROID = ['Default'];
+const ACCESS_CONTROL_OPTIONS_ANDROID = ['None'];
 const ACCESS_CONTROL_MAP = [
   null,
   Keychain.ACCESS_CONTROL.DEVICE_PASSCODE,
@@ -51,7 +51,8 @@ export default class KeychainExample extends Component {
 
   componentDidMount() {
     Keychain.getSupportedBiometryType({}).then((biometryType) => {
-      this.setState({biometryType});
+      console.log('Biometry Type: ', biometryType);
+      this.setState({ biometryType });
     });
   }
 
@@ -76,23 +77,31 @@ export default class KeychainExample extends Component {
         password: '',
         status: `Credentials saved! takes: ${
           end.getTime() - start.getTime()
-        } millis`,
+          } millis`,
       });
     } catch (err) {
-      this.setState({status: 'Could not save credentials, ' + err});
+      this.setState({ status: 'Could not save credentials, ' + err });
     }
   }
 
   async load() {
     try {
-      const credentials = await Keychain.getGenericPassword();
+      const options = {
+        authenticationPrompt: {
+          title: 'Authentication needed',
+          subtitle: 'Subtitle',
+          description: 'Some descriptive text',
+          cancel: 'Cancel',
+        },
+      };
+      const credentials = await Keychain.getGenericPassword(options);
       if (credentials) {
-        this.setState({...credentials, status: 'Credentials loaded!'});
+        this.setState({ ...credentials, status: 'Credentials loaded!' });
       } else {
-        this.setState({status: 'No credentials stored.'});
+        this.setState({ status: 'No credentials stored.' });
       }
     } catch (err) {
-      this.setState({status: 'Could not load credentials. ' + err});
+      this.setState({ status: 'Could not load credentials. ' + err });
     }
   }
 
@@ -105,7 +114,7 @@ export default class KeychainExample extends Component {
         password: '',
       });
     } catch (err) {
-      this.setState({status: 'Could not reset credentials, ' + err});
+      this.setState({ status: 'Could not reset credentials, ' + err });
     }
   }
 
@@ -142,7 +151,8 @@ export default class KeychainExample extends Component {
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={styles.container}>
+        style={styles.container}
+      >
         <View style={styles.content}>
           <Text style={styles.title}>Keychain Example</Text>
           <View style={styles.field}>
@@ -155,8 +165,8 @@ export default class KeychainExample extends Component {
               onSubmitEditing={() => {
                 this.passwordTextInput.focus();
               }}
-              onChange={(event) =>
-                this.setState({username: event.nativeEvent.text})
+              onChange={event =>
+                this.setState({ username: event.nativeEvent.text })
               }
               underlineColorAndroid="transparent"
               blurOnSubmit={false}
@@ -170,11 +180,11 @@ export default class KeychainExample extends Component {
               password={true}
               autoCapitalize="none"
               value={this.state.password}
-              ref={(input) => {
+              ref={input => {
                 this.passwordTextInput = input;
               }}
-              onChange={(event) =>
-                this.setState({password: event.nativeEvent.text})
+              onChange={event =>
+                this.setState({ password: event.nativeEvent.text })
               }
               underlineColorAndroid="transparent"
             />
@@ -188,7 +198,7 @@ export default class KeychainExample extends Component {
                   ? [...VALUES, this.state.biometryType]
                   : VALUES
               }
-              onTabPress={(index) =>
+              onTabPress={index =>
                 this.setState({
                   ...this.state,
                   accessControl: AC_MAP[index],
@@ -203,7 +213,7 @@ export default class KeychainExample extends Component {
               <SegmentedControlTab
                 selectedIndex={this.state.selectedSecurityIndex}
                 values={SECURITY_LEVEL_OPTIONS}
-                onTabPress={(index) =>
+                onTabPress={index =>
                   this.setState({
                     ...this.state,
                     securityLevel: SL_MAP[index],
@@ -216,7 +226,7 @@ export default class KeychainExample extends Component {
               <SegmentedControlTab
                 selectedIndex={this.state.selectedStorageIndex}
                 values={SECURITY_STORAGE_OPTIONS}
-                onTabPress={(index) =>
+                onTabPress={index =>
                   this.setState({
                     ...this.state,
                     storageSelection: ST_MAP[index],
@@ -233,7 +243,8 @@ export default class KeychainExample extends Component {
           <View style={styles.buttons}>
             <TouchableHighlight
               onPress={() => this.save()}
-              style={styles.button}>
+              style={styles.button}
+            >
               <View style={styles.save}>
                 <Text style={styles.buttonText}>Save</Text>
               </View>
@@ -241,7 +252,8 @@ export default class KeychainExample extends Component {
 
             <TouchableHighlight
               onPress={() => this.load()}
-              style={styles.button}>
+              style={styles.button}
+            >
               <View style={styles.load}>
                 <Text style={styles.buttonText}>Load</Text>
               </View>
@@ -249,7 +261,8 @@ export default class KeychainExample extends Component {
 
             <TouchableHighlight
               onPress={() => this.reset()}
-              style={styles.button}>
+              style={styles.button}
+            >
               <View style={styles.reset}>
                 <Text style={styles.buttonText}>Reset</Text>
               </View>
@@ -263,7 +276,8 @@ export default class KeychainExample extends Component {
                   const level = await Keychain.getSecurityLevel();
                   alert(level);
                 }}
-                style={styles.button}>
+                style={styles.button}
+              >
                 <View style={styles.load}>
                   <Text style={styles.buttonText}>Get security level</Text>
                 </View>
@@ -275,7 +289,8 @@ export default class KeychainExample extends Component {
             <View style={styles.buttons}>
               <TouchableHighlight
                 onPress={() => this.ios_specifics()}
-                style={styles.button}>
+                style={styles.button}
+              >
                 <View style={styles.load}>
                   <Text style={styles.buttonText}>Test Other APIs</Text>
                 </View>
